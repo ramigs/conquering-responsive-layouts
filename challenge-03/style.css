@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    font-family: Roboto;
+    font-style: normal;
+    color: white;
+}
+
+.intro-container {
+    background: #23424A;
+    padding-top: 9.25em;
+    padding-left: 7.625em;
+    padding-bottom: 9.25em;
+}
+
+.intro-content {
+    width: 50%;
+    max-width: 710px;
+}
+
+.intro-content h1 {
+    font-weight: 900;
+    margin-bottom: 1em;
+}
+
+.intro-content p {
+    font-weight: 300;
+    margin-bottom: 1em;
+    line-height: 1.4em;
+    margin-bottom: 4em;
+}
+
+.btn-intro {
+    padding: 1em 3em;
+    background: #38CFD9;
+    border-radius: 31.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    color: #072A2D;
+}
