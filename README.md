@@ -20,7 +20,7 @@ instead. `rem` is also appropriate to space elements between themselves
 `em` is padding, when we would like to have different size versions of an
 element.
 
-Youtube video: https://www.youtube.com/watch?v=_-aDOAMmDHI
+YouTube video: https://www.youtube.com/watch?v=_-aDOAMmDHI
 
 Source code: https://codepen.io/kevinpowell/pen/RKdjXe
 
@@ -111,3 +111,21 @@ html {
 
 - It wants to be 80% of its parent, but it will never get bigger than 750px.
 - As `height`, in general, `min-width` should also be avoided. They "fight against something to be responsive".
+
+## CSS Units: vh, vw, vmin, vmax
+
+YouTube video: https://www.youtube.com/watch?v=IWFqGsXxJ1E
+
+Source code: https://codepen.io/kevinpowell/pen/QdRyKe
+
+- `vh` and `vw` stand for viewport height and viewport width.
+- `height: 100vh` is useful for full-screen, it sets the height to 100% of the height of its viewport.
+- Can cause some problems, in smaller screens. Content can _spill out_ of its container if it doesn't fit. Use some media queries to fix that if needed.
+- Percentage widths are relative to the parent element. Viewport widths are not. Can be useful when you want to stretch something outside of its container and take up the entire width of the viewport.
+
+- `vmax` is based on the biggest viewport unit (width and height).
+- `vmin` is the other way around, it takes the smallest unit.
+- Cool trick is having `padding-top` and `padding-bottom` as `10vh`, for example.
+- Setting `font-size` of a title with `vw` can be very useful to make them responsive, instead of media queries that change the `font-size` at different sizes. Maybe only for very small and very big screen sizes.
+  Doesn't work so good with paragraph text.
+- `8vmin` for the `font-size` of a title is also a really cool trick. While the height is smaller than the width (desktop), it will be in relation to the height; when the width becomes smaller (mobile), it will starto to be in relation the width.
