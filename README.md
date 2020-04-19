@@ -14,8 +14,15 @@
 
 ## em vs rem
 
-https://codepen.io/kevinpowell/pen/RKdjXe
-https://www.youtube.com/watch?v=_-aDOAMmDHI
+_TL;DR_: In general, `em` should not be used for `font-size`. Use `rem`,
+instead. `rem` is also appropriate to space elements between themselves
+(`margin`). `em` gives uses consistent, scalable results. A good use case for
+`em` is padding, when we would like to have different size versions of an
+element.
+
+Youtube video: https://www.youtube.com/watch?v=_-aDOAMmDHI
+
+Source code: https://codepen.io/kevinpowell/pen/RKdjXe
 
 - Pixels are solid units, they never change.
 - `em` and `rem` make our lives much easier when it comes to responsive.
@@ -47,7 +54,7 @@ https://www.youtube.com/watch?v=_-aDOAMmDHI
 
 - In this case, `margin-bottom` will be `16px` (the font size of the `html` element).
 
-How is this useful? (See video at 8:10s)
+How is this useful? (See video @ 8:10s)
 
 - For example, setting `padding` in a `button`.
 
@@ -57,7 +64,7 @@ How is this useful? (See video at 8:10s)
 }
 ```
 
-- Now, imagine we want a small button:
+- Now imagine we want a small button:
 
 ```css
 .btn-small {
@@ -89,3 +96,18 @@ html {
 ```
 
 - Everything gets bigger because at one point both `em`s and `rem`s will reach `html` (careful with the compounding effect). With one media query only, all the `font-size`s can be changed. If `px` was being used, it would not be possible to do this.
+
+## max-width
+
+- Very useful for big screen sizes, when we want to limit total line lengths, without having text stretching all the way across.
+- Combine `width` (%) and `max-width` (px)
+
+```css
+.container {
+  width: 80%;
+  max-width: 750px;
+}
+```
+
+- It wants to be 80% of its parent, but it will never get bigger than 750px.
+- As `height`, in general, `min-width` should also be avoided. They "fight against something to be responsive".
