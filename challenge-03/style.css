@@ -1,39 +1,42 @@
-* {
+*, *::before, *::after {
     box-sizing: border-box;
-    margin: 0;
 }
 
 body {
-    font-family: Roboto;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
     font-style: normal;
     color: white;
 }
 
-.intro-container {
+.hero {
     background: #23424A;
-    padding-top: 9.25em;
-    padding-left: 7.625em;
-    padding-bottom: 9.25em;
+    padding: 6.25em 0;
 }
 
-.intro-content {
-    width: 50%;
-    max-width: 710px;
+.hero-container {
+    width: 80%;
+    max-width: 750px;
+    margin: 0 auto;
 }
 
-.intro-content h1 {
+.hero-content {
+    width: 70%;
+}
+
+.hero-content h1 {
     font-weight: 900;
     margin-bottom: 1em;
 }
 
-.intro-content p {
+.hero-content p {
     font-weight: 300;
-    margin-bottom: 1em;
     line-height: 1.4em;
     margin-bottom: 4em;
 }
 
-.btn-intro {
+.hero-content .btn-hero {
+    display: inline-block;
     padding: 1em 3em;
     background: #38CFD9;
     border-radius: 31.5px;
@@ -42,4 +45,8 @@ body {
     font-weight: bold;
     letter-spacing: 0.05em;
     color: #072A2D;
+}
+
+.btn-hero:hover, .btn-hero:focus {
+    opacity: .75;
 }

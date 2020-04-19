@@ -1,6 +1,6 @@
 # conquering-responsive-layouts
 
-> Notes and challenge solutions for [Kevin
+> Challenge solutions and Notes on [Kevin
 > Powell's](https://www.kevinpowell.co/) course [Conquering Responsive
 > Layouts](https://courses.kevinpowell.co/courses/conquering-responsive-layouts)
 
@@ -27,7 +27,8 @@ Source code: https://codepen.io/kevinpowell/pen/RKdjXe
 - Pixels are solid units, they never change.
 - `em` and `rem` make our lives much easier when it comes to responsive.
 - The whole em unit has its background in the print world, but it the world of web it relates just to font sizes
-- `em` looks at its parent's `font-size`. If `font-size` is not defined, it keeps looking up for it until its found.
+- For `font-size`, `em` looks at its parent's `font-size`. If `font-size` is not defined, it keeps looking up for it until its found.
+- For other properties, `em` looks at **that** element's `font-size`.
 - Generally, if `font-size` is not changed, `1em` equals to `16px`.
 - With `em` the font sizes compound, they build on each other, so things can get out of control.
 - `rem` (root em) was invented to fix the compounding problem. Relates to `html`'s `font-size`.
@@ -99,8 +100,11 @@ html {
 
 ## max-width
 
+https://css-tricks.com/tale-width-max-width/
+
+- Helps avoiding horizontal scrolling.
 - Very useful for big screen sizes, when we want to limit total line lengths, without having text stretching all the way across.
-- Combine `width` (%) and `max-width` (px)
+- Combine `width` (%) and `max-width` (px):
 
 ```css
 .container {
