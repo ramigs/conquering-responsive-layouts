@@ -180,3 +180,18 @@ Source code: https://codepen.io/kevinpowell/pen/QdRyKe
 
 - We've seen what happens when one of the flex items has shorter content.
 - If you want to make sure they're all the same size, give them `width: 100%`. Because they all want to be 100%, they'll even out and evenly distribute within that space. 100% is the _ideal_ size that they want to be.
+
+### Spacing flex items
+
+Two ways of doing it:
+
+1. `gap` (as of April 2020 only supported in Firefox)
+2. using combinator `+`:
+
+```css
+.col + .col {
+  margin-left: 20px;
+}
+```
+
+It targets all the `col` classes that have and adjacent (on top of it in terms of how the HTML is written) `cal` class.
