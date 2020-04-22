@@ -133,3 +133,50 @@ Source code: https://codepen.io/kevinpowell/pen/QdRyKe
 - Setting `font-size` of a title with `vw` can be very useful to make them responsive, instead of media queries that change the `font-size` at different sizes. Maybe only for very small and very big screen sizes.
   Doesn't work so good with paragraph text.
 - `8vmin` for the `font-size` of a title is also a really cool trick. While the height is smaller than the width (desktop), it will be in relation to the height; when the width becomes smaller (mobile), it will starto to be in relation the width.
+
+## flexbox
+
+- `display:flex` declares a container as a flex container.
+- By default, it says "This item is becoming a row" (The default value of `flex-direction` is `row`). This means all its direct children will be columns.
+- `flex-direction` can also have the value `column`. In that case, the item is becoming a column and its direct children rows.
+- A child of a flex container is called flex item.
+- Flex items try to shrink down to the smallest size they can be. For example, by default a `div` has a width of 100%. However, if that div is a flex item and the `flex-direction` of its parent is `row`, it won't _want_ to take 100% anymore.
+
+![flex items and flex container](./img/flexbox-items-width.png)
+
+```css
+.container {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid red;
+}
+
+.row {
+  /* display: flex => flex container */
+  display: flex;
+  border: 2px solid green;
+}
+
+.col {
+  /* these are now flex items */
+}
+```
+
+- Now, let's try commenting the paragraph of the first flex item:
+
+![flex items and flex container](./img/flexbox-items-shrink.png#shrink)
+
+- As we can see, that item only takes the minimum space it needs.
+- Flex items, by default, _want_ to be as small as they can be.
+
+- At the same time, their content (the `<p>` element, to be more specific) is trying to take up 100% of the width. If we comment the last two flex items, leaving only the first, we get:
+
+![flex items and flex container](./img/flexbox-items-p.png)
+
+- The paragraph is forcing the flex item to take 100% of the width.
+- When the three flex items are present, all their `<p>` elements are trying to take 100% of the width.
+- But, since their parent elements are all flex items of the same flex container, they'll have to fit in the same row.
+
+- We've seen [what happens](#shrink) when one of the flex items has shorter content.
+- If you want to make sure they're all the same size, give them `width: 100%`. Because they all want to be 100%, they'll even out and evenly distribute within that space. 100% is the \_ideal" size that they want to be.
