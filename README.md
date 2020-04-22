@@ -163,20 +163,20 @@ Source code: https://codepen.io/kevinpowell/pen/QdRyKe
 }
 ```
 
-- Now, let's try commenting the paragraph of the first flex item:
+- Now, let's try commenting out the paragraph of the first flex item:
 
-![flex items and flex container](./img/flexbox-items-shrink.png#shrink)
+![flex items only taking needed space](./img/flexbox-items-shrink.png)
 
 - As we can see, that item only takes the minimum space it needs.
 - Flex items, by default, _want_ to be as small as they can be.
 
 - At the same time, their content (the `<p>` element, to be more specific) is trying to take up 100% of the width. If we comment the last two flex items, leaving only the first, we get:
 
-![flex items and flex container](./img/flexbox-items-p.png)
+![flex items content forcing width](./img/flexbox-items-p.png)
 
 - The paragraph is forcing the flex item to take 100% of the width.
 - When the three flex items are present, all their `<p>` elements are trying to take 100% of the width.
 - But, since their parent elements are all flex items of the same flex container, they'll have to fit in the same row.
 
-- We've seen [what happens](#shrink) when one of the flex items has shorter content.
+- We've seen what happens when one of the flex items has shorter content.
 - If you want to make sure they're all the same size, give them `width: 100%`. Because they all want to be 100%, they'll even out and evenly distribute within that space. 100% is the \_ideal" size that they want to be.
