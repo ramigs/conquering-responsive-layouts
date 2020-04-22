@@ -179,4 +179,4 @@ Source code: https://codepen.io/kevinpowell/pen/QdRyKe
 - But, since their parent elements are all flex items of the same flex container, they'll have to fit in the same row.
 
 - We've seen what happens when one of the flex items has shorter content.
-- If you want to make sure they're all the same size, give them `width: 100%`. Because they all want to be 100%, they'll even out and evenly distribute within that space. 100% is the \_ideal" size that they want to be.
+- If you want to make sure they're all the same size, give them `width: 100%`. Because they all want to be 100%, they'll even out and evenly distribute within that space. 100% is the _ideal_ size that they want to be.
