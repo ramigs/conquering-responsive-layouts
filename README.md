@@ -195,3 +195,81 @@ Two ways of doing it:
 ```
 
 It targets all the `col` classes that have and adjacent (on top of it in terms of how the HTML is written) `cal` class.
+
+### A deeper dive into flexbox
+
+#### Reducing the amount of HTML and separation of responsibilities in classes
+
+Imagine we have something like this:
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Cheap</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
+    </div>
+    <div class="col">
+      <h2>Quick</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+`.container` is setting the `width` and `max-width`. `.row` is just doing `display: flex;`:
+
+```css
+.container {
+  width: 80%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.row {
+  display: flex;
+}
+```
+
+If we remove the the `.row` div and and the class to its parent:
+
+```html
+<div class="container row">
+  <div class="col">
+    <h2>Cheap</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </p>
+  </div>
+</div>
+```
+
+Which gives us the exact same result.
+Perhaps now `row` is not the best name for the class anymore. We can change it to something different,
+such as `d-flex` (Bootstrap naming), for example.
+
+So now we have a container that's also a flex container:
+
+```html
+<div class="container d-flex">
+  <div class="col">
+    <h2>Cheap</h2>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam.
+    </p>
+  </div>
+</div>
+```
+
+This separation in two classes is important because there may be times when we need a container but don´t want it to be a flex container (to have its content broken down into columns).
