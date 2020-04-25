@@ -238,7 +238,7 @@ Imagine we have something like this:
 }
 ```
 
-If we remove the the `.row` div and and the class to its parent:
+If we remove the the `.row` `div` and add the class to its parent:
 
 ```html
 <div class="container row">
@@ -273,3 +273,127 @@ So now we have a container that's also a flex container:
 ```
 
 This separation in two classes is important because there may be times when we need a container but don´t want it to be a flex container (to have its content broken down into columns).
+
+#### Image inside flex container
+
+- `display: flex` stretches all its items to be equal in height
+- This can cause images that are flex items to loose their aspect ratio
+- `align-items: flex-start` in the flex container is one possible solution
+- If a flex container's `flex-direction` is `row` => `align-items` will work on the y-axis; If a flex container's `flex-direction` is `column` => `align-items` will work on the x-axis
+- However, it's good practice to have the flex container do the least amount of work possible
+
+Another possible solution:
+
+- Wrapping the `img` in a `div`. The `img` won't stretch anymore, the `div` will
+
+Or, a third solution:
+
+- Don't wrap it in `div` but give it this class:
+
+```css
+.hero__img {
+  align-self: flex-start;
+}
+```
+
+#### Column widths and flexbox
+
+This is our starting point:
+
+```html
+<div class="hero">
+  <div class="container row">
+    <div class="hero__text">
+      <h1>Responsive layouts don’t have to be a struggle</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam.
+      </p>
+      <a href="#" class="btn">I want to learn</a>
+    </div>
+    <img class="hero__img" src="img/hero-img.jpg" alt="website sketches" />
+  </div>
+</div>
+```
+
+```css
+.hero__text {
+  background: brown;
+}
+
+.hero__img {
+  border: 4px solid red;
+  align-self: flex-start;
+}
+```
+
+This is what we see:
+
+![flex items text and image no width](./img/column-widths-and-flexbox.png)
+
+The text is really long and is trying to push that more and more. The image has room to shrink, because its just one item by itself.
+
+- Remember: if there's no content, flex items want to shrink down to the smallest possible size. That's what happening with the image (more or less).
+
+If we give them both a width of 100%:
+
+```css
+.hero__text {
+  background: brown;
+  width: 100%;
+}
+
+.hero__img {
+  border: 4px solid red;
+  width: 100%;
+}
+```
+
+They'll match in size (though evidently not 100% each):
+
+![flex items text and image both width 100%](./img/column-widths-and-flexbox-width-100.png)
+
+We can distribute both their widths how we want. For example, if we give the text 60% and the image 30%, there will be 10% of empty space:
+
+![flex items text and image empty space left](./img/column-widths-and-flexbox-empty-space.png)
+
+We have to ways of spacing the items:
+
+1. explicit `margin-right` in the text class:
+
+```css
+.hero__text {
+  background: brown;
+  width: 60%;
+  margin-right: 10%;
+}
+```
+
+2. `justify-content` in the flex container:
+
+```css
+.row {
+  /* display: flex => flex container */
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+Solution 2 is better because there's no need to explicitly specify a value.
+
+![flex items text and image justify content](./img/column-widths-and-flexbox-justify-content.png)
+
+#### Ensuring images are responsive
+
+If you're using the approach where `img` is wrapped in a `div`, the image won't be a flex item anymore (the `div` will). This can cause horizontal scrolling in smaller screens because the image won't shrink.
+
+So, one thing that should be done is adding this to the global style:
+
+```css
+img {
+  max-width: 100%;
+}
+```
+
+Now, all the images will always be responsive.
