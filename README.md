@@ -397,3 +397,87 @@ img {
 ```
 
 Now, all the images will always be responsive.
+
+### Common Navigation
+
+![common nav](./img/common-nav.png)
+
+Could be achieved in two ways:
+
+1.
+
+```html
+<ul class="nav__list">
+  <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+  <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+  <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+  <li class="nav__item nav__item--push-right">
+    <a href="#" class="nav__link">Sign In</a>
+  </li>
+  <li class="nav__item">
+    <a href="#" class="nav__link nav__link--button">Sign up</a>
+  </li>
+</ul>
+```
+
+```css
+.nav__item--push-right {
+  margin-left: auto !important;
+}
+```
+
+Only works with `!important` because of
+
+```css
+.nav__item + .nav__item {
+  margin-left: 2em;
+}
+```
+
+This method is not so common, though its useful to know if the parent is not a flex container or you don't have access to it.
+
+2.
+
+Create a second `ul` (primary + secondary navigation):
+
+```html
+<ul class="nav__list">
+  <li class="nav__item">
+    <a href="#" class="nav__link">Sign In</a>
+  </li>
+  <li class="nav__item">
+    <a href="#" class="nav__link nav__link--button">Sign up</a>
+  </li>
+</ul>
+```
+
+Make `nav` a flex container with `justify-content: space-between`:
+
+```css
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+```
+
+### Adding a Logo
+
+If there's already a "Home" link in the navigation, it's better for accessibility purposes to not repeat it having the logo also inside the `nav`.
+So, add the logo as a sibling to `nav`:
+
+```html
+<div class="container">
+  <a href="#"
+    ><img src="./img/logo.svg" alt="logo conquering responsive layouts"
+  /></a>
+  <nav class="nav">
+    <ul class="nav__list">
+      <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+    </ul>
+  </nav>
+</div>
+```
+
+![flexbox nav](./img/flexbox-nav-logo.png)
+
+Add class `row` to the container to make it a a flex container and have both flex items side by side.
