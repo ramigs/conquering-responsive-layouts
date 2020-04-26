@@ -478,6 +478,38 @@ So, add the logo as a sibling to `nav`:
 </div>
 ```
 
-![flexbox nav](./img/flexbox-nav-logo.png)
+![flexbox nav logo](./img/flexbox-nav-logo.png)
 
 Add class `row` to the container to make it a a flex container and have both flex items side by side.
+
+Center `.nav` items in relation to the logo space using `align-items: center;`.
+
+![flexbox nav vertically centered](./img/flexbox-nav-logo-vertically-centered-1.png)
+
+**Always remember**, by default, with flex, everything shrinks to the smallest it can be.
+If we explicitly set the width of `.nav` to 100%, it's going to try to be the biggest it can:
+
+![flexbox nav shrink](./img/flexbox-nav-logo-vertically-centered.png)
+
+There's another way to achieve the same result, `flex-grow` set to 1.
+
+Just a small `margin-right: 2em;` to `.logo` and we're done:
+
+![flexbox nav logo margin](./img/flexbox-nav-logo-margin.png)
+
+Now, imagine you want to center the primary `.nav__list`.
+
+- Remove the previous margin from `.logo`.
+- Create a new class
+
+```css
+.nav__list--primary {
+  margin: 0 auto;
+}
+```
+
+- Add it to the first `.nav__list`.
+
+We get a perfectly center aligned primary navigation:
+
+![flexbox nav horizontally centered](./img/flexbox-nav-logo-horizontally-centered-1.png)
